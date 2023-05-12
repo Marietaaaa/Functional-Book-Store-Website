@@ -1,0 +1,206 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 12, 2023 at 09:38 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `shop_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `price` int(100) NOT NULL,
+  `genre` varchar(50) NOT NULL,
+  `quantity` int(20) NOT NULL,
+  `image` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `number` varchar(12) NOT NULL,
+  `message` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `number` varchar(12) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `method` varchar(100) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `total_products` varchar(1000) NOT NULL,
+  `total_price` int(100) NOT NULL,
+  `placed_on` varchar(50) NOT NULL,
+  `payment_status` varchar(20) NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `price` int(100) NOT NULL,
+  `genre` varchar(50) NOT NULL,
+  `image` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `price`, `genre`, `image`) VALUES
+(18, 'The name of the wind', 32, 'Fantazi', 'wind name.jpg'),
+(19, 'Bird Box', 36, 'Horror', 'birdbox2.jpg'),
+(21, 'It', 29, 'Horror', 'it-9781982127794_hr.jpg'),
+(22, 'Divergent', 55, 'Aksion', 'divergent1.jpg'),
+(23, 'Bridgerton the Duke & I', 46, 'Romance', 'duke1.jpg'),
+(24, 'Shadow and bone', 67, 'Aventure', 'bone1.jpg'),
+(25, 'Hamlet', 70, 'Klasik', 'Hamlet.jpg'),
+(26, 'Mexican gothic', 42, 'Horror', '91V-gEkDBAL._AC_UF1000,1000_QL80_.jpg'),
+(28, 'Great Gatsby', 44, 'Klasik', 'great_gatsby.jpg'),
+(29, 'The fallen star', 71, 'Aventure', 'the_fallen_stars1.jpg'),
+(30, 'November 9', 35, 'Romance', 'november1.jpg'),
+(31, 'One hundred years', 49, 'Klasik', 'one_hundret_years.jpg'),
+(33, 'Catching fire', 33, 'Aventure', 'catchingfire1.jpg'),
+(34, 'The sentinel', 33, 'Aksion', 'lee child.jpg'),
+(35, 'The divine comedy', 54, 'Klasik', 'Divine.jpg'),
+(36, 'The Lord of the rings', 51, 'Fantazi', 'ring.jpg'),
+(37, 'Harry Potter', 42, 'Fantazi', 'Harry_Potter.jpg'),
+(38, 'The notebook', 40, 'Romance', 'notebook1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` int(100) NOT NULL,
+  `user_type` varchar(20) NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_type`) VALUES
+(6, 'Admin', 'admin@gmail.com', 192023, 'admin'),
+(7, 'User', 'user@gmail.com', 6, 'user');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
